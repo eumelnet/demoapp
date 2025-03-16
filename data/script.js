@@ -1,11 +1,12 @@
 import * as XLSX from 'xlsx';
 
 // Replace with the actual URL of your Google Sheet (Published as CSV)
-const googleSheetURL = 'https://docs.google.com/spreadsheets/d/1Dxi1SBylvqnO7RaB5oZ5k9RL20qokh9vIuQOpR15Igk/pub?output=xlsx';
+const googleSheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTQrG3DGoGk8vXN5E_2LhR0-8mN6vOQ6jz1Cq5J2wcVjS0Q/pub?output=xlsx';
+const corsProxy = 'https://corsproxy.io/?';
 
 async function fetchData() {
     try {
-        const response = await fetch(googleSheetURL);
+        const response = await fetch(corsProxy + googleSheetURL);
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -80,6 +81,14 @@ async function displayResults() {
   const { headers, rows } = await processExcelData();
     if (!rows) return;
 
+    console.log("Headers in displayResults:", headers); // Debugging
+    console.log("Rows in displayResults:", rows);       // Debugging
+
+    if (!headers || !rows) {
+        console.error("Headers or rows are undefined in displayResults.");
+        return;
+    }
+
     const resultsContainer = document.getElementById('results-container');
     const table = document.createElement('table');
     const thead = document.createElement('thead');
@@ -114,6 +123,14 @@ async function displaySchedule() {
   const {headers, rows} = await processExcelData();
    if (!rows) return;
 
+    console.log("Headers in displaySchedule:", headers); // Debugging
+    console.log("Rows in displaySchedule:", rows);       // Debugging
+
+    if (!headers || !rows) {
+        console.error("Headers or rows are undefined in displaySchedule.");
+        return;
+    }
+
     const scheduleContainer = document.getElementById('schedule-container');
     const table = document.createElement('table');
     const thead = document.createElement('thead');
@@ -144,10 +161,7 @@ async function displaySchedule() {
     scheduleContainer.appendChild(table);
 }
 
-
 // Call the functions to display data
 displayTeams();
 displayResults();
 displaySchedule();
-
-
