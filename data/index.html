@@ -1,5 +1,77 @@
-<html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drachenbootrennen</title>
+    <meta name="importmap">
+    <script type="importmap">
+        {
+            "imports": {
+                "xlsx": "https://cdn.sheetjs.com/xlsx-latest/package/xlsx.mjs"
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" type="module"></script>
+</head>
+
 <body>
-hello
+    <header>
+        <h1>Drachenbootrennen</h1>
+        <nav>
+            <ul>
+                <li><a href="#teams">Teams</a></li>
+                <li><a href="#results">Ergebnisse</a></li>
+                <li><a href="#schedule">Zeitplan</a></li>
+                <li><a href="#about">Über uns</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-content">
+                <h2>Willkommen zum spannenden Drachenbootrennen!</h2>
+                <p>Erleben Sie Nervenkitzel, Teamgeist und sportliche Höchstleistungen auf dem Wasser.</p>
+                <a href="#schedule" class="cta-button">Zeitplan ansehen</a>
+            </div>
+            <div class="hero-image">
+                <!-- Replace with actual image or generated SVG -->
+                <img src="hero.svg" alt="Drachenbootrennen Szene">
+            </div>
+        </section>
+
+        <section id="teams">
+            <h2>Teams</h2>
+            <div id="team-container">
+                <!-- Teams will be dynamically added here -->
+            </div>
+        </section>
+
+        <section id="results">
+            <h2>Ergebnisse</h2>
+            <div id="results-container">
+                <!-- Results will be dynamically added here -->
+            </div>
+        </section>
+
+        <section id="schedule">
+            <h2>Zeitplan</h2>
+            <div id="schedule-container">
+                <!-- Schedule will be dynamically added here -->
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>Über uns</h2>
+            <p>Informationen über die Veranstaltung und die Organisatoren.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Drachenbootrennen</p>
+    </footer>
 </body>
+
 </html>
