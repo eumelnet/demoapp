@@ -24,7 +24,7 @@ jobs:
           echo "$KUBECONFIG_FILE" | base64 --decode > /tmp/config
           export KUBECONFIG=/tmp/config
           helm -n "${GITHUB_REPOSITORY##*/}" upgrade -i webapp \
-            --set image.repository=ghcr.io/eumelnet/eumelnet/webtemplate \
+            --set image.repository=ghcr.io/eumelnet/eumelnet/"${GITHUB_REPOSITORY##*/}" \
             --set image.tag=main \
             --set ingress.enabled=true \
             --set ingress.className=nginx \
