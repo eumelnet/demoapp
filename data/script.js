@@ -1,7 +1,8 @@
 import * as XLSX from 'xlsx';
 
 // Replace with the actual URL of your Google Sheet (Published as CSV)
-const googleSheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTQrG3DGoGk8vXN5E_2LhR0-8mN6vOQ6jz1Cq5J2wcVjS0Q/pub?output=xlsx';
+//const googleSheetURL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTQrG3DGoGk8vXN5E_2LhR0-8mN6vOQ6jz1Cq5J2wcVjS0Q/pub?output=xlsx';
+const googleSheetURL = 'https://docs.google.com/spreadsheets/d/1Dxi1SBylvqnO7RaB5oZ5k9RL20qokh9vIuQOpR15Igk/pub?output=xlsx';
 
 async function fetchData() {
     try {
