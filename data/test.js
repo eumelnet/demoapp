@@ -1,6 +1,6 @@
 import * as XLSX from 'xlsx';
 
-const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8nZAAWK8TzaHAp8txeroZBRc8dhFCi2__dKw2Zpb1EDnRsWuiJqfaFiyYUQSVbgTKOZ3NNYOQa9m0/pub?output=csv";
+const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8nZAAWK8TzaHAp8txeroZBRc8dhFCi2__dKw2Zpb1EDnRsWuiJqfaFiyYUQSVbgTKOZ3NNYOQa9m0/pub?output=csv&range=A1:E100";
 
 async function fetchData() {
   try {
