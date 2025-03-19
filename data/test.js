@@ -5,6 +5,32 @@ const CSV_URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vR8nZAAWK8TzaHA
 async function fetchData() {
   try {
     const response = await fetch(CSV_URL);
+
+    if (!response.ok) {
+      throw new Error(`HTTP Error: ${response.status}`);
+    }
+
+    const csvText = await response.text();
+    console.log("CSV Text (Anfang):", csvText.slice(0, 200)); // Nur ersten Teil loggen
+
+    const workbook = XLSX.read(csvText, { type: 'string' });
+    const sheetName = workbook.SheetNames[0];
+    const worksheet = workbook.Sheets[sheetName];
+    const data = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+    const headers = data[0];
+    const rows = data.slice(1);
+
+    return { headers, rows };
+  } catch (error) {
+    console.error("CSV Fetch/Parse Error:", error);
+    return null;
+  }
+}
+
+async function fetchOLDData() {
+  try {
+    const response = await fetch(CSV_URL);
     const csvText = await response.text();
 
     // Wandeln CSV → Array mit SheetJS
