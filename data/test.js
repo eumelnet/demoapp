@@ -19,23 +19,28 @@ fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}
 
 async function fetchData() {
     try {
-        const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`)
-	  .then(res => res.json())
-	  .then(data => {
-  	  console.log(data.values);
- 	 })
-	  .catch(err => console.error(err));
-
+        const response = await fetch(`https://sheets.googleapis.com/v4/spreadsheets/${SHEET_ID}/values/${RANGE}?key=${API_KEY}`);
+        
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
-        const buffer = await response.arrayBuffer();
+
+        const data = await response.json();
+        console.log(data.values);
+
+        const worksheet = XLSX.utils.aoa_to_sheet(data.values);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+        const buffer = XLSX.write(workbook, { type: "array", bookType: "xlsx" });
         return buffer;
+
     } catch (error) {
         console.error('Fetching error:', error);
         return null;
     }
 }
+
 
 async function processExcelData() {
     const excelData = await fetchData();
