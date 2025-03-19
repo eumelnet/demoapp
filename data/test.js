@@ -23,10 +23,6 @@ async function fetchData() {
   }
 }
 
-
-  .catch(err => console.error(err));
-
-
 async function processExcelData() {
     const excelData = await fetchData();
     if (!excelData) return;
